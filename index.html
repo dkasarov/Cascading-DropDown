@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="cascade.js"></script>
+	<title>Angular + PHP = Cascading Dropdown</title>
+</head>
+
+<body ng-app="app" ng-controller="formCtrl">
+<div class="container">
+	<div class="panel-group">
+		<div class="panel panel-default">
+			<div class="panel-heading">Please choose your vehicle's technical specifications</div>
+			
+			<form class="form-horizontal" method="POST" name="vehicle">
+				<div class="form-group">
+					<label class="control-label col-sm-2">Brand: </label>
+					<div class="col-sm-2" >
+						<select name="brand" class="form-control" ng-model="Brand_ID" ng-change="getModels()" ng-options="option.ID as option.Name for option in brands.options" >
+							<option value="">Select Brand</value>
+						</select>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Model:</label>
+					<div class="col-sm-2" >
+						<select name="model" class="form-control" ng-model="Model_ID" ng-change="getModifProduced()" ng-options="option.ID as option.Name for option in models.options" >
+							<option value="">Select Model</value>
+						</select>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Years produced:</label>
+					<div class="col-sm-2" >
+						<select name="modif_produced" class="form-control" ng-model="Modif_Produced" ng-change="getDoors()" ng-options="option.Years as option.Years for option in modifProduced.options" >
+							<option value="">Select Years of Produced</value>
+						</select>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Number of doors:</label>
+					<div class="col-sm-2" >
+						<select name="modif_door" class="form-control" ng-model="Modif_Door" ng-change="getFuels()" ng-options="option.Doors as option.Doors for option in modifDoors.options" >
+							<option value="">Select Number of Doors </value>
+						</select>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Engine Fuel:</label>
+					<div class="col-sm-2" >
+						<select name="modif_fuel" class="form-control" ng-model="Modif_Fuel" ng-change="getVolume()" ng-options="option.ID as option.Name for option in modifFuels.options" >
+							<option value="">Select Engine Fuel </value>
+						</select>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Engine Volume:</label>
+					<div class="col-sm-2" >
+						<select name="modif_volume" class="form-control" ng-model="Modif_Volume" ng-change="getPower()" ng-options="option.EngineVolume as option.EngineVolume for option in modifVolume.options" >
+							<option value="">Select Engine Volume </value>
+						</select>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Engine Power:</label>
+					<div class="col-sm-2" >
+						<select name="modif_power" class="form-control" ng-model="Modif_Power" ng-options="option.Name as option.EnginePower for option in modifPower.options">
+							<option value="">Select Engine Power </value>
+						</select>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-2">
+						<button type="submit" class="btn btn-primary" ng-click="showAbbr()">Show My Abbreviation</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-offset-2 col-sm-6">{{result}}</label>	
+				</div>				
+			</form>
+		</div>
+	</div>
+</div>
+	
+</body>
+</html>
